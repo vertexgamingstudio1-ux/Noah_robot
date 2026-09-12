@@ -1,16 +1,10 @@
-```r
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Noah Software Platform</title>
-
-    <meta
-        name="description"
-        content="Official Noah Robot software, downloads, documentation and release information."
-    >
+    <title>Noah Robot ID</title>
 
     <style>
         * {
@@ -19,382 +13,132 @@
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0b1020;
-            color: #f5f7ff;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* NAVBAR */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(11, 16, 32, 0.92);
-            border-bottom: 1px solid #26304a;
-            backdrop-filter: blur(12px);
-        }
-
-        nav {
-            max-width: 1100px;
-            margin: auto;
-            padding: 16px 20px;
-
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top, #172033 0%, #080b12 45%, #050609 100%);
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            padding: 42px 34px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 22px;
+            background: rgba(15, 19, 29, 0.92);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+            text-align: center;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 800;
-        }
-
-        .logo span {
-            color: #62a8ff;
-        }
-
-        .nav-links {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 18px;
             display: flex;
-            gap: 20px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #cbd3e8;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 82vh;
-            max-width: 1100px;
-            margin: auto;
-            padding: 100px 20px;
-
-            display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            align-items: flex-start;
+            font-size: 30px;
+            font-weight: bold;
+            background: #ffffff;
+            color: #080b12;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 7px 12px;
-            border: 1px solid #34415f;
-            border-radius: 999px;
-            color: #9ec8ff;
-            background: #121a30;
-            margin-bottom: 20px;
-            font-size: 14px;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
         }
 
-        .hero h1 {
-            font-size: clamp(42px, 8vw, 82px);
-            line-height: 1;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #62a8ff;
-        }
-
-        .hero p {
-            max-width: 720px;
-            color: #b9c3d9;
-            font-size: 19px;
+        .description {
+            color: #aeb7c7;
+            line-height: 1.6;
             margin-bottom: 30px;
         }
 
-        .buttons {
+        .input-box {
             display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
         }
 
-        .button {
-            display: inline-block;
-            padding: 12px 20px;
-            border-radius: 10px;
-            border: 1px solid #34415f;
-            background: #151e35;
+        input {
+            flex: 1;
+            min-width: 0;
+            padding: 15px 16px;
+            border-radius: 12px;
+            border: 1px solid #303848;
+            outline: none;
+            background: #0a0d14;
             color: white;
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: #ffffff;
+        }
+
+        button {
+            padding: 15px 22px;
+            border: none;
+            border-radius: 12px;
+            background: white;
+            color: #080b12;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
         }
 
-        .button:hover {
+        button:hover {
             transform: translateY(-2px);
-            border-color: #62a8ff;
+            box-shadow: 0 8px 25px rgba(255,255,255,0.15);
         }
 
-        .button.primary {
-            background: #2675d9;
-            border-color: #2675d9;
+        button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+            transform: none;
         }
 
-        /* SECTIONS */
-
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 80px 20px;
-        }
-
-        .section-title {
-            font-size: 36px;
-            margin-bottom: 12px;
-        }
-
-        .section-description {
-            color: #9faac1;
-            margin-bottom: 35px;
-            max-width: 720px;
-        }
-
-        /* CARDS */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
-        }
-
-        .card {
-            background: #11182b;
-            border: 1px solid #26304a;
-            border-radius: 16px;
-            padding: 24px;
-        }
-
-        .card h3 {
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #aeb8ce;
-        }
-
-        /* DOWNLOAD */
-
-        .download-box {
-            background: linear-gradient(
-                145deg,
-                #11182b,
-                #10172a
-            );
-
-            border: 1px solid #34415f;
-            border-radius: 18px;
-            padding: 30px;
-            max-width: 760px;
-        }
-
-        .download-version {
-            color: #62a8ff;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .download-box h3 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .download-box p {
-            color: #aeb8ce;
-            margin-bottom: 22px;
-        }
-
-        .download-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .info-item {
-            background: #0c1324;
-            border: 1px solid #26304a;
-            border-radius: 10px;
-            padding: 14px;
-        }
-
-        .info-item strong {
-            display: block;
-            color: #ffffff;
-            margin-bottom: 3px;
-        }
-
-        .info-item span {
-            color: #8995ae;
+        #status {
+            min-height: 24px;
+            color: #aeb7c7;
             font-size: 14px;
         }
 
-        .warning {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background: #171d2e;
-            border: 1px solid #34415f;
-            color: #aeb8ce;
-            font-size: 14px;
+        .success {
+            color: #72e6a4 !important;
         }
 
-        .warning strong {
-            color: #ffffff;
+        .error {
+            color: #ff7777 !important;
         }
 
-        /* VERSION */
-
-        .version-box {
-            background: #11182b;
-            border: 1px solid #26304a;
-            border-radius: 16px;
-            padding: 25px;
-            max-width: 650px;
-        }
-
-        .version-number {
-            font-size: 42px;
-            font-weight: 800;
-            color: #62a8ff;
-            margin: 10px 0;
-        }
-
-        .status {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 999px;
-            background: #173a29;
-            color: #78e0a5;
+        .info {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #737d90;
             font-size: 13px;
-            margin-bottom: 15px;
         }
 
-        /* RELEASE NOTES */
-
-        .release {
-            border-left: 3px solid #2675d9;
-            padding-left: 20px;
-            margin-top: 20px;
-        }
-
-        .release h3 {
-            margin-bottom: 8px;
-        }
-
-        .release p {
-            color: #aeb8ce;
-        }
-
-        .release ul {
-            margin-top: 12px;
-            padding-left: 20px;
-            color: #aeb8ce;
-        }
-
-        /* GUIDE */
-
-        .guide {
-            display: grid;
-            gap: 15px;
-        }
-
-        .guide-item {
-            background: #11182b;
-            border: 1px solid #26304a;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .guide-question {
-            width: 100%;
-            background: none;
-            border: none;
-            color: white;
-            text-align: left;
-            padding: 18px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .guide-question:hover {
-            background: #151e35;
-        }
-
-        .guide-answer {
-            display: none;
-            padding: 0 18px 18px;
-            color: #aeb8ce;
-        }
-
-        .guide-item.open .guide-answer {
-            display: block;
-        }
-
-        /* SUPPORT */
-
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-        }
-
-        /* FOOTER */
-
-        footer {
-            border-top: 1px solid #26304a;
-            padding: 35px 20px;
-            text-align: center;
-            color: #7f8ba5;
-        }
-
-        footer p + p {
-            margin-top: 5px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 700px) {
-
-            .nav-links {
-                display: none;
+        @media (max-width: 500px) {
+            .container {
+                padding: 34px 22px;
             }
 
-            .hero {
-                min-height: 70vh;
-                padding-top: 70px;
+            .input-box {
+                flex-direction: column;
             }
 
-            section {
-                padding: 60px 20px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .download-box {
-                padding: 22px;
+            button {
+                width: 100%;
             }
         }
     </style>
@@ -402,495 +146,117 @@
 
 <body>
 
-<header>
-    <nav>
+    <main class="container">
 
-        <a href="#home" class="logo">
-            NOAH<span>.</span>
-        </a>
+        <div class="logo">N</div>
 
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#download">Download</a></li>
-            <li><a href="#version">Version</a></li>
-            <li><a href="#guide">Guide</a></li>
-            <li><a href="#support">Support</a></li>
-        </ul>
+        <h1>Noah Robot ID</h1>
 
-    </nav>
-</header>
-
-
-<main>
-
-    <!-- HOME -->
-
-    <section class="hero" id="home">
-
-        <div class="badge">
-            Noah Software Platform
-        </div>
-
-        <h1>
-            Meet <span>Noah</span>.
-        </h1>
-
-        <p>
-            Noah is an AI student-guidance robot designed to help
-            students learn, discover their strengths, develop skills,
-            explore possibilities and plan for the future.
+        <p class="description">
+            Enter your Noah Robot ID to continue to the robot's page.
         </p>
 
-        <div class="buttons">
-
-            <a class="button primary" href="#download">
-                Download Noah Software
-            </a>
-
-            <a class="button" href="#guide">
-                Read the Guide
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <h2 class="section-title">
-            What is Noah?
-        </h2>
-
-        <p class="section-description">
-            Noah combines voice interaction, artificial intelligence,
-            memory, sensors and robotic control into one
-            student-focused system.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>Learning</h3>
-                <p>
-                    Helps students understand concepts and work through
-                    learning problems.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Skills</h3>
-                <p>
-                    Helps students discover and develop useful skills
-                    beyond academic marks.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Future Planning</h3>
-                <p>
-                    Helps students explore interests, goals and possible
-                    future paths.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>AI Interaction</h3>
-                <p>
-                    Uses voice recognition, artificial intelligence and
-                    speech output to communicate with users.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- DOWNLOAD -->
-
-    <section id="download">
-
-        <h2 class="section-title">
-            Download Noah Software
-        </h2>
-
-        <p class="section-description">
-            Download the current Noah Robot software package and install
-            it on a compatible Noah system.
-        </p>
-
-        <div class="download-box">
-
-            <div class="download-version">
-                Latest Stable Release
-            </div>
-
-            <h3>
-                Noah Software 1.0.0
-            </h3>
-
-            <p>
-                The first public Noah software release containing the
-                core robot control system, AI interaction, speech
-                recognition and supporting modules.
-            </p>
-
-            <div class="download-info">
-
-                <div class="info-item">
-                    <strong>Version</strong>
-                    <span>1.0.0</span>
-                </div>
-
-                <div class="info-item">
-                    <strong>Status</strong>
-                    <span>Stable</span>
-                </div>
-
-                <div class="info-item">
-                    <strong>Platform</strong>
-                    <span>Raspberry Pi</span>
-                </div>
-
-                <div class="info-item">
-                    <strong>Package</strong>
-                    <span>ZIP archive</span>
-                </div>
-
-            </div>
-
-            <!--
-                Put the actual Noah software ZIP inside:
-                software/Noah-Software-1.0.0.zip
-            -->
-
-            <a
-                class="button primary"
-                href="Noah_robot.zip"
-                download
+        <div class="input-box">
+            <input
+                type="text"
+                id="robotId"
+                placeholder="#230714"
+                autocomplete="off"
+                maxlength="50"
             >
-                Download Noah Software 1.0.0
-            </a>
 
-            <div class="warning">
-                <strong>Security note:</strong>
-                API keys, passwords, <code>secrets.env</code> and
-                private user data are not included in the download.
-                They must remain on the Noah device.
-            </div>
-
+            <button id="searchButton" onclick="findRobot()">
+                Search
+            </button>
         </div>
 
-    </section>
+        <div id="status"></div>
 
-
-    <!-- VERSION -->
-
-    <section id="version">
-
-        <h2 class="section-title">
-            Software Version
-        </h2>
-
-        <p class="section-description">
-            Information about the current public Noah software release.
-        </p>
-
-        <div class="version-box">
-
-            <div class="status">
-                STABLE
-            </div>
-
-            <h3>
-                Current Version
-            </h3>
-
-            <div class="version-number">
-                1.0.0
-            </div>
-
-            <p>
-                Initial public Noah software release.
-            </p>
-
-            <br>
-
-            <p>
-                Release date:
-                <strong>September 2026</strong>
-            </p>
-
-            <div class="release">
-
-                <h3>
-                    Release Notes
-                </h3>
-
-                <p>
-                    Noah Software 1.0.0 establishes the initial
-                    software architecture for the robot.
-                </p>
-
-                <ul>
-                    <li>Core robot controller</li>
-                    <li>AI brain integration</li>
-                    <li>Speech recognition</li>
-                    <li>Speech output</li>
-                    <li>Robot movement control</li>
-                    <li>Safety system</li>
-                    <li>Display and face systems</li>
-                    <li>Multilingual speech support</li>
-                </ul>
-
-            </div>
-
+        <div class="info">
+            Noah Robot System
         </div>
 
-    </section>
+    </main>
 
+    <script>
+        async function findRobot() {
 
-    <!-- GUIDE -->
+            const input = document.getElementById("robotId");
+            const button = document.getElementById("searchButton");
+            const status = document.getElementById("status");
 
-    <section id="guide">
+            let enteredId = input.value.trim();
 
-        <h2 class="section-title">
-            Noah Guide Book
-        </h2>
+            if (!enteredId) {
+                status.textContent = "Please enter a Robot ID.";
+                status.className = "error";
+                return;
+            }
 
-        <p class="section-description">
-            Basic information for installing, operating and
-            understanding Noah.
-        </p>
+            // Make sure the ID has the # format
+            if (!enteredId.startsWith("#")) {
+                enteredId = "#" + enteredId;
+            }
 
-        <div class="guide">
+            button.disabled = true;
+            status.textContent = "Searching...";
+            status.className = "";
 
-            <div class="guide-item">
+            try {
 
-                <button class="guide-question">
-                    What is Noah?
-                </button>
+                // robot_id.txt must be in the same folder as this HTML file
+                const response = await fetch("robot_id.txt", {
+                    cache: "no-store"
+                });
 
-                <div class="guide-answer">
-                    Noah is an AI-powered student-guidance robot.
-                    Its purpose is to help students learn, develop
-                    skills, explore interests and plan goals.
-                </div>
+                if (!response.ok) {
+                    throw new Error("Robot ID file could not be loaded.");
+                }
 
-            </div>
+                const fileText = await response.text();
 
+                // Clean the file contents
+                const storedId = fileText.trim();
 
-            <div class="guide-item">
+                if (enteredId === storedId) {
 
-                <button class="guide-question">
-                    What computer does Noah use?
-                </button>
+                    status.textContent = "Robot ID found. Opening Noah...";
+                    status.className = "success";
 
-                <div class="guide-answer">
-                    The current robot design uses a Raspberry Pi Zero 2 W
-                    as the main computer.
-                </div>
+                    // Redirect to the robot page
+                    window.location.href =
+                        "robot/" + encodeURIComponent(storedId.substring(1));
 
-            </div>
+                } else {
 
+                    status.textContent = "Robot ID not found.";
+                    status.className = "error";
+                }
 
-            <div class="guide-item">
+            } catch (error) {
 
-                <button class="guide-question">
-                    How does Noah communicate?
-                </button>
+                console.error(error);
 
-                <div class="guide-answer">
-                    Noah can use a microphone for speech input,
-                    speech recognition to understand the user,
-                    an AI brain for responses and a speaker for
-                    voice output.
-                </div>
+                status.textContent =
+                    "Unable to check the Robot ID file.";
 
-            </div>
+                status.className = "error";
 
+            } finally {
 
-            <div class="guide-item">
+                button.disabled = false;
+            }
+        }
 
-                <button class="guide-question">
-                    How do I install Noah Software?
-                </button>
+        // Allow Enter key
+        document.getElementById("robotId").addEventListener("keydown", function(event) {
 
-                <div class="guide-answer">
-                    Download the Noah software ZIP package, extract it
-                    on the Noah device and follow the installation
-                    instructions included with the release.
-                </div>
-
-            </div>
-
-
-            <div class="guide-item">
-
-                <button class="guide-question">
-                    Are API keys included in the software?
-                </button>
-
-                <div class="guide-answer">
-                    No. Private credentials such as API keys and
-                    secrets.env must be configured separately on the
-                    Noah device. They are never included in the public
-                    software package.
-                </div>
-
-            </div>
-
-
-            <div class="guide-item">
-
-                <button class="guide-question">
-                    Can Noah receive software updates?
-                </button>
-
-                <div class="guide-answer">
-                    The Noah website acts as the public software
-                    release and information hub. Future versions can
-                    be published here as new releases become available.
-                    Automatic updating may be added in a later version.
-                </div>
-
-            </div>
-
-
-            <div class="guide-item">
-
-                <button class="guide-question">
-                    What should I do if Noah has a problem?
-                </button>
-
-                <div class="guide-answer">
-                    First check the installed software version and
-                    restart Noah. If the problem continues, check the
-                    documentation for the relevant component.
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SUPPORT -->
-
-    <section id="support">
-
-        <h2 class="section-title">
-            Support
-        </h2>
-
-        <p class="section-description">
-            The Noah website is the central location for software
-            releases, documentation and project information.
-        </p>
-
-        <div class="support-grid">
-
-            <div class="card">
-
-                <h3>
-                    Software
-                </h3>
-
-                <p>
-                    Download the latest public Noah software release
-                    from the Download section.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Documentation
-                </h3>
-
-                <p>
-                    Use the Noah Guide Book for installation and
-                    basic software information.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Updates
-                </h3>
-
-                <p>
-                    New software versions and release notes will be
-                    published through this website.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <p>
-        © 2026 Noah Robot Project
-    </p>
-
-    <p>
-        AI Student Guidance System
-    </p>
-
-</footer>
-
-
-<script>
-
-    // =========================================================
-    // GUIDE BOOK ACCORDION
-    // =========================================================
-
-    const guideQuestions =
-        document.querySelectorAll(".guide-question");
-
-    guideQuestions.forEach(function(button) {
-
-        button.addEventListener("click", function() {
-
-            const item = button.parentElement;
-
-            item.classList.toggle("open");
+            if (event.key === "Enter") {
+                findRobot();
+            }
 
         });
-
-    });
-
-
-    // =========================================================
-    // NOAH WEBSITE VERSION
-    // =========================================================
-
-    const NOAH_VERSION = "1.0.0";
-
-    console.log("Noah website loaded.");
-
-    console.log(
-        "Noah software information:",
-        NOAH_VERSION
-    );
-
-</script>
+    </script>
 
 </body>
 </html>
