@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Noah Robot</title>
+    <title>Noah Software Platform</title>
 
     <meta
         name="description"
-        content="Noah — an AI student guidance robot."
+        content="Official Noah Robot software, downloads, documentation and release information."
     >
 
     <style>
@@ -84,7 +84,7 @@
         /* HERO */
 
         .hero {
-            min-height: 80vh;
+            min-height: 82vh;
             max-width: 1100px;
             margin: auto;
             padding: 100px 20px;
@@ -117,7 +117,7 @@
         }
 
         .hero p {
-            max-width: 700px;
+            max-width: 720px;
             color: #b9c3d9;
             font-size: 19px;
             margin-bottom: 30px;
@@ -130,6 +130,7 @@
         }
 
         .button {
+            display: inline-block;
             padding: 12px 20px;
             border-radius: 10px;
             border: 1px solid #34415f;
@@ -165,7 +166,7 @@
         .section-description {
             color: #9faac1;
             margin-bottom: 35px;
-            max-width: 700px;
+            max-width: 720px;
         }
 
         /* CARDS */
@@ -191,6 +192,77 @@
             color: #aeb8ce;
         }
 
+        /* DOWNLOAD */
+
+        .download-box {
+            background: linear-gradient(
+                145deg,
+                #11182b,
+                #10172a
+            );
+
+            border: 1px solid #34415f;
+            border-radius: 18px;
+            padding: 30px;
+            max-width: 760px;
+        }
+
+        .download-version {
+            color: #62a8ff;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .download-box h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .download-box p {
+            color: #aeb8ce;
+            margin-bottom: 22px;
+        }
+
+        .download-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            background: #0c1324;
+            border: 1px solid #26304a;
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .info-item strong {
+            display: block;
+            color: #ffffff;
+            margin-bottom: 3px;
+        }
+
+        .info-item span {
+            color: #8995ae;
+            font-size: 14px;
+        }
+
+        .warning {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #171d2e;
+            border: 1px solid #34415f;
+            color: #aeb8ce;
+            font-size: 14px;
+        }
+
+        .warning strong {
+            color: #ffffff;
+        }
+
         /* VERSION */
 
         .version-box {
@@ -198,7 +270,7 @@
             border: 1px solid #26304a;
             border-radius: 16px;
             padding: 25px;
-            max-width: 600px;
+            max-width: 650px;
         }
 
         .version-number {
@@ -216,6 +288,28 @@
             color: #78e0a5;
             font-size: 13px;
             margin-bottom: 15px;
+        }
+
+        /* RELEASE NOTES */
+
+        .release {
+            border-left: 3px solid #2675d9;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+
+        .release h3 {
+            margin-bottom: 8px;
+        }
+
+        .release p {
+            color: #aeb8ce;
+        }
+
+        .release ul {
+            margin-top: 12px;
+            padding-left: 20px;
+            color: #aeb8ce;
         }
 
         /* GUIDE */
@@ -243,6 +337,10 @@
             cursor: pointer;
         }
 
+        .guide-question:hover {
+            background: #151e35;
+        }
+
         .guide-answer {
             display: none;
             padding: 0 18px 18px;
@@ -253,6 +351,14 @@
             display: block;
         }
 
+        /* SUPPORT */
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
         /* FOOTER */
 
         footer {
@@ -260,6 +366,10 @@
             padding: 35px 20px;
             text-align: center;
             color: #7f8ba5;
+        }
+
+        footer p + p {
+            margin-top: 5px;
         }
 
         /* MOBILE */
@@ -282,6 +392,10 @@
             .hero p {
                 font-size: 17px;
             }
+
+            .download-box {
+                padding: 22px;
+            }
         }
     </style>
 </head>
@@ -290,16 +404,19 @@
 
 <header>
     <nav>
+
         <a href="#home" class="logo">
             NOAH<span>.</span>
         </a>
 
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
+            <li><a href="#download">Download</a></li>
             <li><a href="#version">Version</a></li>
             <li><a href="#guide">Guide</a></li>
             <li><a href="#support">Support</a></li>
         </ul>
+
     </nav>
 </header>
 
@@ -325,13 +442,15 @@
         </p>
 
         <div class="buttons">
-            <a class="button primary" href="#guide">
+
+            <a class="button primary" href="#download">
+                Download Noah Software
+            </a>
+
+            <a class="button" href="#guide">
                 Read the Guide
             </a>
 
-            <a class="button" href="#version">
-                View Version
-            </a>
         </div>
 
     </section>
@@ -347,8 +466,8 @@
 
         <p class="section-description">
             Noah combines voice interaction, artificial intelligence,
-            memory, sensors and robotic control into one student-focused
-            system.
+            memory, sensors and robotic control into one
+            student-focused system.
         </p>
 
         <div class="cards">
@@ -364,22 +483,103 @@
             <div class="card">
                 <h3>Skills</h3>
                 <p>
-                    Helps students discover and develop useful skills.
+                    Helps students discover and develop useful skills
+                    beyond academic marks.
                 </p>
             </div>
 
             <div class="card">
                 <h3>Future Planning</h3>
                 <p>
-                    Helps students explore possible goals and future paths.
+                    Helps students explore interests, goals and possible
+                    future paths.
                 </p>
             </div>
 
             <div class="card">
                 <h3>AI Interaction</h3>
                 <p>
-                    Uses voice and AI to communicate naturally with the user.
+                    Uses voice recognition, artificial intelligence and
+                    speech output to communicate with users.
                 </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DOWNLOAD -->
+
+    <section id="download">
+
+        <h2 class="section-title">
+            Download Noah Software
+        </h2>
+
+        <p class="section-description">
+            Download the current Noah Robot software package and install
+            it on a compatible Noah system.
+        </p>
+
+        <div class="download-box">
+
+            <div class="download-version">
+                Latest Stable Release
+            </div>
+
+            <h3>
+                Noah Software 1.0.0
+            </h3>
+
+            <p>
+                The first public Noah software release containing the
+                core robot control system, AI interaction, speech
+                recognition and supporting modules.
+            </p>
+
+            <div class="download-info">
+
+                <div class="info-item">
+                    <strong>Version</strong>
+                    <span>1.0.0</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>Status</strong>
+                    <span>Stable</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>Platform</strong>
+                    <span>Raspberry Pi</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>Package</strong>
+                    <span>ZIP archive</span>
+                </div>
+
+            </div>
+
+            <!--
+                Put the actual Noah software ZIP inside:
+                software/Noah-Software-1.0.0.zip
+            -->
+
+            <a
+                class="button primary"
+                href="software/Noah-Software-1.0.0.zip"
+                download
+            >
+                Download Noah Software 1.0.0
+            </a>
+
+            <div class="warning">
+                <strong>Security note:</strong>
+                API keys, passwords, <code>secrets.env</code> and
+                private user data are not included in the download.
+                They must remain on the Noah device.
             </div>
 
         </div>
@@ -396,7 +596,7 @@
         </h2>
 
         <p class="section-description">
-            This page shows the current public Noah software release.
+            Information about the current public Noah software release.
         </p>
 
         <div class="version-box">
@@ -405,14 +605,16 @@
                 STABLE
             </div>
 
-            <h3>Current Version</h3>
+            <h3>
+                Current Version
+            </h3>
 
             <div class="version-number">
                 1.0.0
             </div>
 
             <p>
-                Initial Noah software release.
+                Initial public Noah software release.
             </p>
 
             <br>
@@ -421,6 +623,30 @@
                 Release date:
                 <strong>September 2026</strong>
             </p>
+
+            <div class="release">
+
+                <h3>
+                    Release Notes
+                </h3>
+
+                <p>
+                    Noah Software 1.0.0 establishes the initial
+                    software architecture for the robot.
+                </p>
+
+                <ul>
+                    <li>Core robot controller</li>
+                    <li>AI brain integration</li>
+                    <li>Speech recognition</li>
+                    <li>Speech output</li>
+                    <li>Robot movement control</li>
+                    <li>Safety system</li>
+                    <li>Display and face systems</li>
+                    <li>Multilingual speech support</li>
+                </ul>
+
+            </div>
 
         </div>
 
@@ -436,7 +662,8 @@
         </h2>
 
         <p class="section-description">
-            Basic information for operating and understanding Noah.
+            Basic information for installing, operating and
+            understanding Noah.
         </p>
 
         <div class="guide">
@@ -449,23 +676,8 @@
 
                 <div class="guide-answer">
                     Noah is an AI-powered student-guidance robot.
-                    Its purpose is to help students learn, develop skills,
-                    explore interests and plan goals.
-                </div>
-
-            </div>
-
-
-            <div class="guide-item">
-
-                <button class="guide-question">
-                    How does Noah communicate?
-                </button>
-
-                <div class="guide-answer">
-                    Noah can use a microphone for speech input,
-                    speech recognition to understand the user,
-                    an AI brain for responses and a speaker for voice output.
+                    Its purpose is to help students learn, develop
+                    skills, explore interests and plan goals.
                 </div>
 
             </div>
@@ -488,13 +700,61 @@
             <div class="guide-item">
 
                 <button class="guide-question">
+                    How does Noah communicate?
+                </button>
+
+                <div class="guide-answer">
+                    Noah can use a microphone for speech input,
+                    speech recognition to understand the user,
+                    an AI brain for responses and a speaker for
+                    voice output.
+                </div>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <button class="guide-question">
+                    How do I install Noah Software?
+                </button>
+
+                <div class="guide-answer">
+                    Download the Noah software ZIP package, extract it
+                    on the Noah device and follow the installation
+                    instructions included with the release.
+                </div>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <button class="guide-question">
+                    Are API keys included in the software?
+                </button>
+
+                <div class="guide-answer">
+                    No. Private credentials such as API keys and
+                    secrets.env must be configured separately on the
+                    Noah device. They are never included in the public
+                    software package.
+                </div>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <button class="guide-question">
                     Can Noah receive software updates?
                 </button>
 
                 <div class="guide-answer">
-                    The Noah website is designed to become the public
-                    software-information and update hub. Automatic
-                    software updating will be added in a later version.
+                    The Noah website acts as the public software
+                    release and information hub. Future versions can
+                    be published here as new releases become available.
+                    Automatic updating may be added in a later version.
                 </div>
 
             </div>
@@ -507,9 +767,9 @@
                 </button>
 
                 <div class="guide-answer">
-                    First restart Noah and check the software version.
-                    The troubleshooting and update system will be expanded
-                    as the project develops.
+                    First check the installed software version and
+                    restart Noah. If the problem continues, check the
+                    documentation for the relevant component.
                 </div>
 
             </div>
@@ -528,26 +788,52 @@
         </h2>
 
         <p class="section-description">
-            Noah is an evolving project. This website will become the
-            central place for documentation, software versions and
-            future update information.
+            The Noah website is the central location for software
+            releases, documentation and project information.
         </p>
 
-        <div class="card">
+        <div class="support-grid">
 
-            <h3>Noah Software Platform</h3>
+            <div class="card">
 
-            <p>
-                Website:
-                Noah.onrender.com
-            </p>
+                <h3>
+                    Software
+                </h3>
 
-            <br>
+                <p>
+                    Download the latest public Noah software release
+                    from the Download section.
+                </p>
 
-            <p>
-                Current release:
-                Noah Software 1.0.0
-            </p>
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Documentation
+                </h3>
+
+                <p>
+                    Use the Noah Guide Book for installation and
+                    basic software information.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Updates
+                </h3>
+
+                <p>
+                    New software versions and release notes will be
+                    published through this website.
+                </p>
+
+            </div>
 
         </div>
 
@@ -597,9 +883,7 @@
 
     const NOAH_VERSION = "1.0.0";
 
-    console.log(
-        "Noah website loaded."
-    );
+    console.log("Noah website loaded.");
 
     console.log(
         "Noah software information:",
