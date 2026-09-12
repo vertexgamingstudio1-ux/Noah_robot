@@ -157,10 +157,11 @@
         </p>
 
         <div class="input-box">
+
             <input
                 type="text"
                 id="robotId"
-                placeholder="enter robot id written in manual"
+                placeholder="Enter robot ID written in manual"
                 autocomplete="off"
                 maxlength="50"
             >
@@ -168,6 +169,7 @@
             <button id="searchButton" onclick="findRobot()">
                 Search
             </button>
+
         </div>
 
         <div id="status"></div>
@@ -179,6 +181,7 @@
     </main>
 
     <script>
+
         async function findRobot() {
 
             const input = document.getElementById("robotId");
@@ -193,52 +196,80 @@
                 return;
             }
 
-            // Make sure the ID has the # format
+            // Add # automatically if the user did not type it.
             if (!enteredId.startsWith("#")) {
                 enteredId = "#" + enteredId;
             }
 
             button.disabled = true;
-            status.textContent = "Searching...";
+            status.textContent = "Checking Robot ID...";
             status.className = "";
 
             try {
 
-                // robot_id.txt must be in the same folder as this HTML file
-                const response = await fetch("robot_id.txt", {
-                    cache: "no-store"
-                });
+                /*
+                 * robot_id.txt is in the SAME folder as index.html
+                 *
+                 * Folder:
+                 *
+                 * noah-website/
+                 * ├── index.html
+                 * ├── web.html
+                 * ├── robot_id.txt
+                 * └── Noah_robot.zip
+                 */
+
+                const response = await fetch("./robot_id.txt?cache=" + Date.now());
 
                 if (!response.ok) {
-                    throw new Error("Robot ID file could not be loaded.");
+                    throw new Error(
+                        "robot_id.txt could not be loaded. HTTP " + response.status
+                    );
                 }
 
-                const fileText = await response.text();
+                let fileText = await response.text();
 
-                // Clean the file contents
-                const storedId = fileText.trim();
+                // Remove BOM/invisible characters and whitespace.
+                let storedId = fileText
+                    .replace(/^\uFEFF/, "")
+                    .trim();
+
+                // Normalize both IDs.
+                enteredId = enteredId.trim().toUpperCase();
+                storedId = storedId.trim().toUpperCase();
+
+                console.log("Entered ID:", enteredId);
+                console.log("Stored ID:", storedId);
 
                 if (enteredId === storedId) {
 
-                    status.textContent = "Robot ID found. Opening Noah...";
+                    status.textContent =
+                        "Robot ID verified. Opening Noah...";
+
                     status.className = "success";
 
-                    // Redirect to the robot page
-                    window.location.href =
-                        "robot/" + encodeURIComponent(storedId.substring(1));
+                    /*
+                     * IMPORTANT:
+                     * web.html is directly beside this index.html.
+                     */
+                    setTimeout(function () {
+                        window.location.href = "./web.html";
+                    }, 700);
 
                 } else {
 
-                    status.textContent = "Robot ID not found.";
+                    status.textContent =
+                        "Robot ID not found.";
+
                     status.className = "error";
                 }
 
             } catch (error) {
 
-                console.error(error);
+                console.error("Robot ID error:", error);
 
                 status.textContent =
-                    "Unable to check the Robot ID file.";
+                    "Unable to check robot_id.txt.";
 
                 status.className = "error";
 
@@ -248,14 +279,17 @@
             }
         }
 
-        // Allow Enter key
-        document.getElementById("robotId").addEventListener("keydown", function(event) {
+        // Allow Enter key.
+        document
+            .getElementById("robotId")
+            .addEventListener("keydown", function(event) {
 
-            if (event.key === "Enter") {
-                findRobot();
-            }
+                if (event.key === "Enter") {
+                    findRobot();
+                }
 
-        });
+            });
+
     </script>
 
 </body>
