@@ -1,9 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="google-site-verification" content="8NjN5s_GvhyhwBf4PJ6rl62ydflUQydyNQlcAncuNzc" />
+
+    <meta
+        name="google-site-verification"
+        content="8NjN5s_GvhyhwBf4PJ6rl62ydflUQydyNQlcAncuNzc"
+    />
+
     <title>Noah Robot ID</title>
 
     <style>
@@ -19,8 +25,15 @@
             align-items: center;
             justify-content: center;
             font-family: Arial, Helvetica, sans-serif;
+
             background:
-                radial-gradient(circle at top, #172033 0%, #080b12 45%, #050609 100%);
+                radial-gradient(
+                    circle at top,
+                    #172033 0%,
+                    #080b12 45%,
+                    #050609 100%
+                );
+
             color: #ffffff;
             padding: 20px;
         }
@@ -29,23 +42,33 @@
             width: 100%;
             max-width: 520px;
             padding: 42px 34px;
+
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 22px;
+
             background: rgba(15, 19, 29, 0.92);
-            box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.45);
+
             text-align: center;
         }
 
         .logo {
             width: 70px;
             height: 70px;
+
             margin: 0 auto 20px;
+
             border-radius: 18px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 30px;
             font-weight: bold;
+
             background: #ffffff;
             color: #080b12;
         }
@@ -70,12 +93,17 @@
         input {
             flex: 1;
             min-width: 0;
+
             padding: 15px 16px;
+
             border-radius: 12px;
             border: 1px solid #303848;
+
             outline: none;
+
             background: #0a0d14;
             color: white;
+
             font-size: 16px;
         }
 
@@ -85,19 +113,26 @@
 
         button {
             padding: 15px 22px;
+
             border: none;
             border-radius: 12px;
+
             background: white;
             color: #080b12;
+
             font-size: 16px;
             font-weight: bold;
+
             cursor: pointer;
+
             transition: 0.2s;
         }
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255,255,255,0.15);
+
+            box-shadow:
+                0 8px 25px rgba(255,255,255,0.15);
         }
 
         button:disabled {
@@ -108,7 +143,9 @@
 
         #status {
             min-height: 24px;
+
             color: #aeb7c7;
+
             font-size: 14px;
         }
 
@@ -123,12 +160,17 @@
         .info {
             margin-top: 28px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.08);
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
             color: #737d90;
+
             font-size: 13px;
         }
 
         @media (max-width: 500px) {
+
             .container {
                 padding: 34px 22px;
             }
@@ -166,7 +208,10 @@
                 maxlength="50"
             >
 
-            <button id="searchButton" onclick="findRobot()">
+            <button
+                id="searchButton"
+                onclick="findRobot()"
+            >
                 Search
             </button>
 
@@ -180,117 +225,188 @@
 
     </main>
 
+
     <script>
 
         async function findRobot() {
 
-            const input = document.getElementById("robotId");
-            const button = document.getElementById("searchButton");
-            const status = document.getElementById("status");
+            const input =
+                document.getElementById("robotId");
 
-            let enteredId = input.value.trim();
+            const button =
+                document.getElementById("searchButton");
+
+            const status =
+                document.getElementById("status");
+
+
+            let enteredId =
+                input.value.trim();
+
+
+            // --------------------------------
+            // CHECK EMPTY INPUT
+            // --------------------------------
 
             if (!enteredId) {
-                status.textContent = "Please enter a Robot ID.";
+
+                status.textContent =
+                    "Please enter a Robot ID.";
+
                 status.className = "error";
+
                 return;
             }
 
-            // Add # automatically if the user did not type it.
+
+            // --------------------------------
+            // ADD # AUTOMATICALLY
+            // --------------------------------
+
             if (!enteredId.startsWith("#")) {
-                enteredId = "#" + enteredId;
+
+                enteredId =
+                    "#" + enteredId;
             }
 
+
+            // Normalize ID
+            enteredId =
+                enteredId.toUpperCase();
+
+
+            // --------------------------------
+            // UI STATE
+            // --------------------------------
+
             button.disabled = true;
-            status.textContent = "Checking Robot ID...";
+
+            status.textContent =
+                "Checking Robot ID...";
+
             status.className = "";
+
 
             try {
 
-                /*
-                 * robot_id.txt is in the SAME folder as index.html
-                 *
-                 * Folder:
-                 *
-                 * noah-website/
-                 * ├── index.html
-                 * ├── web.html
-                 * ├── robot_id.txt
-                 * └── Noah_robot.zip
-                 */
+                // --------------------------------
+                // SECURE BACKEND CHECK
+                // --------------------------------
+                //
+                // The valid Robot IDs are stored
+                // privately on the server.
+                //
+                // The browser NEVER receives
+                // robot_id.txt or the ID list.
+                //
+                // --------------------------------
 
-                const response = await fetch("./robot_id.txt?cache=" + Date.now());
+                const response =
+                    await fetch("/check-robot", {
 
-                if (!response.ok) {
-                    throw new Error(
-                        "robot_id.txt could not be loaded. HTTP " + response.status
-                    );
-                }
+                        method: "POST",
 
-                let fileText = await response.text();
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
 
-                // Remove BOM/invisible characters and whitespace.
-                let storedId = fileText
-                    .replace(/^\uFEFF/, "")
-                    .trim();
+                        body: JSON.stringify({
+                            robot_id: enteredId
+                        })
+                    });
 
-                // Normalize both IDs.
-                enteredId = enteredId.trim().toUpperCase();
-                storedId = storedId.trim().toUpperCase();
 
-                console.log("Entered ID:", enteredId);
-                console.log("Stored ID:", storedId);
+                // Try to read JSON response
+                const result =
+                    await response.json();
 
-                if (enteredId === storedId) {
+
+                // --------------------------------
+                // VALID ROBOT
+                // --------------------------------
+
+                if (result.valid) {
 
                     status.textContent =
                         "Robot ID verified. Opening Noah...";
 
-                    status.className = "success";
+                    status.className =
+                        "success";
 
-                    /*
-                     * IMPORTANT:
-                     * web.html is directly beside this index.html.
-                     */
+
+                    // Open robot page
                     setTimeout(function () {
-                        window.location.href = "./web.html";
+
+                        window.location.href =
+                            "./web.html";
+
                     }, 700);
 
-                } else {
+
+                }
+
+                // --------------------------------
+                // INVALID ROBOT
+                // --------------------------------
+
+                else {
 
                     status.textContent =
                         "Robot ID not found.";
 
-                    status.className = "error";
+                    status.className =
+                        "error";
                 }
+
 
             } catch (error) {
 
-                console.error("Robot ID error:", error);
+                console.error(
+                    "Robot ID verification error:",
+                    error
+                );
+
 
                 status.textContent =
-                    "Unable to check robot_id.txt.";
+                    "Unable to verify Robot ID.";
 
-                status.className = "error";
+                status.className =
+                    "error";
+            }
 
-            } finally {
+
+            // --------------------------------
+            // ENABLE BUTTON AGAIN
+            // --------------------------------
+
+            finally {
 
                 button.disabled = false;
             }
         }
 
-        // Allow Enter key.
+
+        // --------------------------------
+        // ENTER KEY SUPPORT
+        // --------------------------------
+
         document
             .getElementById("robotId")
-            .addEventListener("keydown", function(event) {
+            .addEventListener(
+                "keydown",
+                function(event) {
 
-                if (event.key === "Enter") {
-                    findRobot();
+                    if (event.key === "Enter") {
+
+                        findRobot();
+                    }
+
                 }
-
-            });
+            );
 
     </script>
 
 </body>
 </html>
+```2
