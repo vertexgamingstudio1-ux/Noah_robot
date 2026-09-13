@@ -9,7 +9,7 @@
     <meta name="google-site-verification"
           content="8NjN5s_GvhyhwBf4PJ6rl62ydflUQydyNQlcAncuNzc">
 
-    <title>Noah Software Platform</title>
+    <title>Noah Robot Access</title>
 
     <style>
 
@@ -24,56 +24,31 @@
             background: #0b0f14;
             color: white;
             min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
         }
 
-        nav {
+        .container {
             width: 100%;
-            padding: 20px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #202832;
-            background: #0b0f14;
+            max-width: 480px;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: #b9c2cc;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 14px;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        .hero {
             text-align: center;
-            padding: 100px 20px 70px;
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        .hero h1 {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: auto;
-            color: #aeb7c2;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .section {
-            max-width: 900px;
-            margin: auto;
-            padding: 70px 20px;
+        .subtitle {
+            text-align: center;
+            color: #8f9aa6;
+            margin-bottom: 35px;
+            font-size: 15px;
         }
 
         .card {
@@ -81,79 +56,73 @@
             border: 1px solid #26303b;
             border-radius: 18px;
             padding: 35px;
-            margin-top: 25px;
         }
 
-        .card h2 {
+        .card h1 {
+            text-align: center;
+            font-size: 25px;
             margin-bottom: 12px;
         }
 
-        .card p {
+        .description {
+            text-align: center;
             color: #aeb7c2;
-            line-height: 1.7;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 25px;
         }
 
-        .download-box {
-            text-align: center;
-        }
-
-        .download-button {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 15px 28px;
-            background: white;
-            color: black;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-
-        .download-button:hover {
-            opacity: 0.85;
-        }
-
-        .robot-access {
-            text-align: center;
-        }
-
-        .robot-access input {
+        input {
             width: 100%;
-            max-width: 400px;
             padding: 15px;
-            margin-top: 20px;
+
             border-radius: 10px;
             border: 1px solid #303b47;
+
             background: #0b0f14;
             color: white;
+
             font-size: 16px;
             outline: none;
         }
 
-        .verify-button {
-            display: block;
-            margin: 15px auto 0;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 10px;
-            background: white;
-            color: black;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 15px;
+        input:focus {
+            border-color: #667585;
         }
 
-        .verify-button:hover {
+        button {
+            width: 100%;
+            margin-top: 15px;
+
+            padding: 15px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: white;
+            color: black;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
             opacity: 0.85;
         }
 
-        .verify-button:disabled {
+        button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
 
         #status {
-            margin-top: 20px;
+            text-align: center;
             min-height: 24px;
+
+            margin-top: 20px;
+
             font-size: 14px;
         }
 
@@ -165,31 +134,22 @@
             color: #ff7d7d;
         }
 
-        footer {
+        .footer {
             text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #202832;
-            color: #707b87;
-            margin-top: 50px;
+            margin-top: 25px;
+
+            color: #59636e;
+            font-size: 12px;
         }
 
-        @media (max-width: 700px) {
-
-            .hero h1 {
-                font-size: 44px;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                margin: 0 8px;
-            }
+        @media (max-width: 500px) {
 
             .card {
                 padding: 25px;
+            }
+
+            .logo {
+                font-size: 36px;
             }
 
         }
@@ -199,97 +159,28 @@
 
 <body>
 
-    <nav>
+    <div class="container">
 
         <div class="logo">
             Noah
         </div>
 
-        <div>
-            <a href="#about">About</a>
-            <a href="#download">Download</a>
-            <a href="#version">Version</a>
-            <a href="#guide">Guide</a>
-            <a href="#support">Support</a>
+        <div class="subtitle">
+            Robot Access
         </div>
 
-    </nav>
-
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <h1>Meet Noah.</h1>
-
-        <p>
-            Noah is an AI student-guidance robot designed to help
-            students learn, discover skills, explore possibilities
-            and plan their future.
-        </p>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section class="section" id="about">
 
         <div class="card">
 
-            <h2>About Noah</h2>
+            <h1>
+                Enter Robot ID
+            </h1>
 
-            <p>
-                Noah combines artificial intelligence, voice interaction,
-                robotics, multilingual speech recognition and safety
-                systems into one student-focused robot.
+            <p class="description">
+                Enter the Robot ID associated with your Noah system
+                to continue.
             </p>
 
-        </div>
-
-    </section>
-
-
-    <!-- DOWNLOAD -->
-
-    <section class="section" id="download">
-
-        <div class="card download-box">
-
-            <h2>Noah Software 1.0.0</h2>
-
-            <p>
-                Stable release for the Noah robot.
-                Designed for Raspberry Pi Zero 2 W.
-            </p>
-
-            <a class="download-button"
-               href="./Noah_robot.zip"
-               download>
-                Download Noah Software
-            </a>
-
-            <p style="margin-top:20px; font-size:13px;">
-                API keys, passwords, secrets.env and private user data
-                are not included in the software package.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ROBOT ACCESS -->
-
-    <section class="section">
-
-        <div class="card robot-access">
-
-            <h2>Access Noah</h2>
-
-            <p>
-                Enter your Robot ID to continue.
-            </p>
 
             <input
                 type="text"
@@ -298,99 +189,49 @@
                 autocomplete="off"
             >
 
+
             <button
-                class="verify-button"
                 id="verifyButton"
                 onclick="verifyRobot()">
                 Verify Robot ID
             </button>
 
+
             <div id="status"></div>
 
         </div>
 
-    </section>
 
-
-    <!-- VERSION -->
-
-    <section class="section" id="version">
-
-        <div class="card">
-
-            <h2>Version</h2>
-
-            <p>
-                Current version: <strong>1.0.0</strong>
-            </p>
-
-            <p>
-                Release date: September 2026
-            </p>
-
+        <div class="footer">
+            Noah Robot Project
         </div>
 
-    </section>
-
-
-    <!-- GUIDE -->
-
-    <section class="section" id="guide">
-
-        <div class="card">
-
-            <h2>Guide</h2>
-
-            <p>
-                Noah currently uses Raspberry Pi Zero 2 W as its
-                main computer. The system includes AI interaction,
-                speech recognition, speech output, movement,
-                safety controls, display systems and multilingual support.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- SUPPORT -->
-
-    <section class="section" id="support">
-
-        <div class="card">
-
-            <h2>Support</h2>
-
-            <p>
-                For software issues, check the project documentation
-                and release information before modifying the robot software.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <footer>
-
-        © 2026 Noah Robot Project
-
-    </footer>
+    </div>
 
 
     <script>
 
         async function verifyRobot() {
 
-            const input = document.getElementById("robotId");
-            const button = document.getElementById("verifyButton");
-            const status = document.getElementById("status");
+            const input =
+                document.getElementById("robotId");
 
-            const enteredId = input.value.trim().toUpperCase();
+            const button =
+                document.getElementById("verifyButton");
+
+            const status =
+                document.getElementById("status");
+
+
+            const enteredId =
+                input.value.trim().toUpperCase();
+
 
             if (enteredId === "") {
 
-                status.textContent = "Please enter a Robot ID.";
+                status.textContent =
+                    "Please enter a Robot ID.";
+
                 status.className = "error";
 
                 return;
@@ -399,18 +240,13 @@
 
             button.disabled = true;
 
-            status.textContent = "Checking Robot ID...";
+            status.textContent =
+                "Checking Robot ID...";
+
             status.className = "";
 
 
             try {
-
-                /*
-                 * Load robot_id.txt
-                 *
-                 * The ?cache= part prevents the browser
-                 * from using an old cached version.
-                 */
 
                 const response = await fetch(
                     "./robot_id.txt?cache=" + Date.now()
@@ -426,7 +262,8 @@
                 }
 
 
-                const storedId = (await response.text())
+                const storedId =
+                    (await response.text())
                     .replace(/^\uFEFF/, "")
                     .trim()
                     .toUpperCase();
@@ -446,14 +283,16 @@
                 if (enteredId === storedId) {
 
                     status.textContent =
-                        "Robot ID verified. Opening Noah...";
+                        "Robot ID verified.";
 
-                    status.className = "success";
+                    status.className =
+                        "success";
 
 
                     setTimeout(function () {
 
-                        window.location.href = "./web.html";
+                        window.location.href =
+                            "./web.html";
 
                     }, 700);
 
@@ -463,7 +302,8 @@
                     status.textContent =
                         "Robot ID not found.";
 
-                    status.className = "error";
+                    status.className =
+                        "error";
 
                 }
 
@@ -475,10 +315,12 @@
                     error
                 );
 
+
                 status.textContent =
                     "Unable to verify Robot ID.";
 
-                status.className = "error";
+                status.className =
+                    "error";
 
 
             } finally {
@@ -489,10 +331,6 @@
 
         }
 
-
-        /*
-         * Allow pressing ENTER inside the Robot ID box.
-         */
 
         document
             .getElementById("robotId")
