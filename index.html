@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="google-site-verification"
-          content="8NjN5s_GvhyhwBf4PJ6rl62ydflUQydyNQlcAncuNzc" />
+          content="8NjN5s_GvhyhwBf4PJ6rl62ydflUQydyNQlcAncuNzc">
 
-    <title>Noah Robot ID</title>
+    <title>Noah Software Platform</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -17,165 +20,275 @@
         }
 
         body {
-            min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
-            background:
-                radial-gradient(circle at top, #172554 0%, #020617 45%, #000 100%);
+            background: #0b0f14;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            min-height: 100vh;
         }
 
-        .container {
+        nav {
             width: 100%;
-            max-width: 520px;
-            text-align: center;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #202832;
+            background: #0b0f14;
         }
 
         .logo {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 25px;
-            border-radius: 25px;
-            background: linear-gradient(135deg, #38bdf8, #6366f1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 42px;
+            font-size: 24px;
             font-weight: bold;
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
         }
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
+        nav a {
+            color: #b9c2cc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
         }
 
-        .subtitle {
-            color: #94a3b8;
-            font-size: 16px;
-            margin-bottom: 35px;
+        nav a:hover {
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px 70px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #aeb7c2;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .section {
+            max-width: 900px;
+            margin: auto;
+            padding: 70px 20px;
         }
 
         .card {
-            background: rgba(15, 23, 42, 0.82);
-            border: 1px solid rgba(148, 163, 184, 0.18);
-            border-radius: 22px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(15px);
+            background: #111820;
+            border: 1px solid #26303b;
+            border-radius: 18px;
+            padding: 35px;
+            margin-top: 25px;
         }
 
         .card h2 {
-            font-size: 22px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .card p {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-bottom: 25px;
+            color: #aeb7c2;
+            line-height: 1.7;
         }
 
-        input {
-            width: 100%;
-            padding: 16px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            background: #020617;
-            color: white;
-            font-size: 16px;
-            outline: none;
+        .download-box {
             text-align: center;
         }
 
-        input:focus {
-            border-color: #38bdf8;
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+        .download-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 28px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
         }
 
-        button {
+        .download-button:hover {
+            opacity: 0.85;
+        }
+
+        .robot-access {
+            text-align: center;
+        }
+
+        .robot-access input {
             width: 100%;
-            margin-top: 15px;
-            padding: 16px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            max-width: 400px;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 1px solid #303b47;
+            background: #0b0f14;
             color: white;
             font-size: 16px;
+            outline: none;
+        }
+
+        .verify-button {
+            display: block;
+            margin: 15px auto 0;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            color: black;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
+            font-size: 15px;
         }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        .verify-button:hover {
+            opacity: 0.85;
         }
 
-        button:disabled {
-            opacity: 0.6;
+        .verify-button:disabled {
+            opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
         }
 
         #status {
             margin-top: 20px;
-            min-height: 22px;
+            min-height: 24px;
             font-size: 14px;
         }
 
         .success {
-            color: #4ade80;
+            color: #72e6a1;
         }
 
         .error {
-            color: #f87171;
+            color: #ff7d7d;
         }
 
-        .info {
-            color: #94a3b8;
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #202832;
+            color: #707b87;
+            margin-top: 50px;
         }
 
-        .footer {
-            margin-top: 25px;
-            color: #64748b;
-            font-size: 12px;
-        }
+        @media (max-width: 700px) {
 
-        @media (max-width: 500px) {
-            h1 {
-                font-size: 34px;
+            .hero h1 {
+                font-size: 44px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
             }
 
             .card {
-                padding: 22px;
+                padding: 25px;
             }
+
         }
+
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <nav>
 
-        <div class="logo">N</div>
-
-        <h1>Noah</h1>
-
-        <div class="subtitle">
-            Student Guidance Robot
+        <div class="logo">
+            Noah
         </div>
+
+        <div>
+            <a href="#about">About</a>
+            <a href="#download">Download</a>
+            <a href="#version">Version</a>
+            <a href="#guide">Guide</a>
+            <a href="#support">Support</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>Meet Noah.</h1>
+
+        <p>
+            Noah is an AI student-guidance robot designed to help
+            students learn, discover skills, explore possibilities
+            and plan their future.
+        </p>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="section" id="about">
 
         <div class="card">
 
-            <h2>Enter Robot ID</h2>
+            <h2>About Noah</h2>
 
             <p>
-                Enter the Robot ID provided with your Noah robot.
+                Noah combines artificial intelligence, voice interaction,
+                robotics, multilingual speech recognition and safety
+                systems into one student-focused robot.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DOWNLOAD -->
+
+    <section class="section" id="download">
+
+        <div class="card download-box">
+
+            <h2>Noah Software 1.0.0</h2>
+
+            <p>
+                Stable release for the Noah robot.
+                Designed for Raspberry Pi Zero 2 W.
+            </p>
+
+            <a class="download-button"
+               href="./Noah_robot.zip"
+               download>
+                Download Noah Software
+            </a>
+
+            <p style="margin-top:20px; font-size:13px;">
+                API keys, passwords, secrets.env and private user data
+                are not included in the software package.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ROBOT ACCESS -->
+
+    <section class="section">
+
+        <div class="card robot-access">
+
+            <h2>Access Noah</h2>
+
+            <p>
+                Enter your Robot ID to continue.
             </p>
 
             <input
@@ -186,65 +299,149 @@
             >
 
             <button
-                id="searchButton"
-                onclick="findRobot()">
-                Verify Robot
+                class="verify-button"
+                id="verifyButton"
+                onclick="verifyRobot()">
+                Verify Robot ID
             </button>
 
             <div id="status"></div>
 
         </div>
 
-        <div class="footer">
-            Noah Robot Project © 2026
+    </section>
+
+
+    <!-- VERSION -->
+
+    <section class="section" id="version">
+
+        <div class="card">
+
+            <h2>Version</h2>
+
+            <p>
+                Current version: <strong>1.0.0</strong>
+            </p>
+
+            <p>
+                Release date: September 2026
+            </p>
+
         </div>
 
-    </div>
+    </section>
+
+
+    <!-- GUIDE -->
+
+    <section class="section" id="guide">
+
+        <div class="card">
+
+            <h2>Guide</h2>
+
+            <p>
+                Noah currently uses Raspberry Pi Zero 2 W as its
+                main computer. The system includes AI interaction,
+                speech recognition, speech output, movement,
+                safety controls, display systems and multilingual support.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUPPORT -->
+
+    <section class="section" id="support">
+
+        <div class="card">
+
+            <h2>Support</h2>
+
+            <p>
+                For software issues, check the project documentation
+                and release information before modifying the robot software.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        © 2026 Noah Robot Project
+
+    </footer>
+
 
     <script>
-        async function findRobot() {
+
+        async function verifyRobot() {
 
             const input = document.getElementById("robotId");
-            const button = document.getElementById("searchButton");
+            const button = document.getElementById("verifyButton");
             const status = document.getElementById("status");
 
-            let enteredId = input.value.trim();
+            const enteredId = input.value.trim().toUpperCase();
 
-            if (!enteredId) {
+            if (enteredId === "") {
+
                 status.textContent = "Please enter a Robot ID.";
                 status.className = "error";
+
                 return;
             }
 
-            // Automatically add # if the user doesn't enter it
-            if (!enteredId.startsWith("#")) {
-                enteredId = "#" + enteredId;
-            }
-
-            enteredId = enteredId.toUpperCase();
 
             button.disabled = true;
 
             status.textContent = "Checking Robot ID...";
-            status.className = "info";
+            status.className = "";
+
 
             try {
+
+                /*
+                 * Load robot_id.txt
+                 *
+                 * The ?cache= part prevents the browser
+                 * from using an old cached version.
+                 */
 
                 const response = await fetch(
                     "./robot_id.txt?cache=" + Date.now()
                 );
 
+
                 if (!response.ok) {
-                    throw new Error("Robot ID file could not be loaded.");
+
+                    throw new Error(
+                        "Robot ID file could not be loaded."
+                    );
+
                 }
+
 
                 const storedId = (await response.text())
                     .replace(/^\uFEFF/, "")
                     .trim()
                     .toUpperCase();
 
-                console.log("Entered Robot ID:", enteredId);
-                console.log("Stored Robot ID:", storedId);
+
+                console.log(
+                    "Entered Robot ID:",
+                    enteredId
+                );
+
+                console.log(
+                    "Stored Robot ID:",
+                    storedId
+                );
+
 
                 if (enteredId === storedId) {
 
@@ -253,9 +450,13 @@
 
                     status.className = "success";
 
+
                     setTimeout(function () {
+
                         window.location.href = "./web.html";
+
                     }, 700);
+
 
                 } else {
 
@@ -263,7 +464,9 @@
                         "Robot ID not found.";
 
                     status.className = "error";
+
                 }
+
 
             } catch (error) {
 
@@ -277,24 +480,36 @@
 
                 status.className = "error";
 
+
             } finally {
 
                 button.disabled = false;
 
             }
+
         }
+
+
+        /*
+         * Allow pressing ENTER inside the Robot ID box.
+         */
 
         document
             .getElementById("robotId")
-            .addEventListener("keydown", function(event) {
+            .addEventListener(
+                "keydown",
+                function(event) {
 
-                if (event.key === "Enter") {
-                    findRobot();
+                    if (event.key === "Enter") {
+
+                        verifyRobot();
+
+                    }
+
                 }
+            );
 
-            });
     </script>
 
 </body>
 </html>
-23
