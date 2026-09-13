@@ -212,125 +212,42 @@
     <script>
 
         async function verifyRobot() {
+    const input = document.getElementById("robotId").value.trim();
+    const status = document.getElementById("status");
 
-            const input =
-                document.getElementById("robotId");
+    if (!input) {
+        status.textContent = "Please enter a Robot ID.";
+        return;
+    }
 
-            const button =
-                document.getElementById("verifyButton");
+    try {
+        const response = await fetch(
+            "./robot_id.txt?cache=" + Date.now()
+        );
 
-            const status =
-                document.getElementById("status");
-
-
-            const enteredId =
-                input.value.trim().toUpperCase();
-
-
-            if (enteredId === "") {
-
-                status.textContent =
-                    "Please enter a Robot ID.";
-
-                status.className = "error";
-
-                return;
-            }
-
-
-            button.disabled = true;
-
-            status.textContent =
-                "Checking Robot ID...";
-
-            status.className = "";
-
-
-            try {
-
-                const response = await fetch(
-                    "./robot_id.txt?cache=" + Date.now()
-                );
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        "Robot ID file could not be loaded."
-                    );
-
-                }
-
-
-                const storedId =
-                    (await response.text())
-                    .replace(/^\uFEFF/, "")
-                    .trim()
-                    .toUpperCase();
-
-
-                console.log(
-                    "Entered Robot ID:",
-                    enteredId
-                );
-
-                console.log(
-                    "Stored Robot ID:",
-                    storedId
-                );
-
-
-                if (enteredId === storedId) {
-
-                    status.textContent =
-                        "Robot ID verified.";
-
-                    status.className =
-                        "success";
-
-
-                    setTimeout(function () {
-
-                        window.location.href =
-                            "./web.html";
-
-                    }, 700);
-
-
-                } else {
-
-                    status.textContent =
-                        "Robot ID not found.";
-
-                    status.className =
-                        "error";
-
-                }
-
-
-            } catch (error) {
-
-                console.error(
-                    "Robot ID verification error:",
-                    error
-                );
-
-
-                status.textContent =
-                    "Unable to verify Robot ID.";
-
-                status.className =
-                    "error";
-
-
-            } finally {
-
-                button.disabled = false;
-
-            }
-
+        if (!response.ok) {
+            throw new Error("Could not load Robot IDs.");
         }
 
+        const text = await response.text();
+
+        const validIds = text
+            .split(/\r?\n/)
+            .map(id => id.trim().toUpperCase())
+            .filter(id => id.length > 0);
+
+        if (validIds.includes(input.toUpperCase())) {
+            status.textContent = "Robot ID verified.";
+            window.location.href = "./web.html";
+        } else {
+            status.textContent = "Invalid Robot ID.";
+        }
+
+    } catch (error) {
+        console.error(error);
+        status.textContent = "Verification system error.";
+    }
+}
 
         document
             .getElementById("robotId")
